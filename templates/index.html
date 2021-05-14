@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title> Home Page</title>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container my-5">
+            <h1>Tracker Master</h1>
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th>Visit count</th>
+                        <th>User Agent</th>
+                        <th>Time of latest visit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tracker in trackers %}
+                    <tr>
+                        <td>{{ tracker.visit_count }}</td>
+                        <td>{{ tracker.user_agent }}</td>
+                        <td>{{ tracker.last_visit_date|datetimefilter }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
